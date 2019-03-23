@@ -61,6 +61,31 @@ class App extends Component {
 
   }
 
+  newRandomCard = (list) => {
+    const listIndex = parseInt(list) - 1
+    const id = Math.random().toString(36).substring(2, 4)
+      + Math.random().toString(36).substring(2, 4);
+      console.log(list)
+      const newCardIds = this.state.lists[listIndex].cardIds.concat(id)
+      console.log(newCardIds)
+    const newObject =  {id:id, title: `Random Card ${id}`, content: 'lorem ipsum'}
+    const newAllCards = {
+      ...this.state.allCards, [id]:newObject
+    }
+    console.log(newAllCards)
+    const newLists = this.state.lists.map((list, index) => {
+      if (index === listIndex) {
+        list.cardIds = newCardIds
+      }
+      return list
+    })
+    this.setState({
+      lists: newLists,
+      allCards: newAllCards
+    })
+    
+  }
+
   render() {
     // const { store } = this.props
     return (
@@ -76,6 +101,7 @@ class App extends Component {
               header={list.header}
               cards={list.cardIds.map(id => this.state.allCards[id])}
               onDeleteItem={this.handleDeleteItem}
+              handleAddRandom={this.newRandomCard}
             />
           ))}
         </div>
