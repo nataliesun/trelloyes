@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Practicing React using Trello
+
+This project uses [Trello's](https://trello.com/en) format to practice using callback props.
+
 ## Available Scripts
 
 In the project directory, you can run:
